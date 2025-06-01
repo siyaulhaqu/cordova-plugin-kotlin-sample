@@ -10,7 +10,7 @@ import java.util.*
 class KotlinSamplePlugin : CordovaPlugin() {
 
     // Add this as a member function of your class
-    private fun writeDebugLog(context: Context, message: String) {
+   /* private fun writeDebugLog(context: Context, message: String) {
         try {
             val logFile = File(context.getExternalFilesDir(null), "kotlin_debug.log")
             logFile.appendText("${SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US).format(Date())}: $message\n")
@@ -35,9 +35,9 @@ class KotlinSamplePlugin : CordovaPlugin() {
                 }
                 else -> return false
             }
-    }
+    }*/
     
-/*    override fun execute(action: String, args: JSONArray, callbackContext: CallbackContext): Boolean {
+    override fun execute(action: String, args: JSONArray, callbackContext: CallbackContext): Boolean {
         return when (action) {
             "echo" -> {
                 val message = args.getString(0)
@@ -51,7 +51,7 @@ class KotlinSamplePlugin : CordovaPlugin() {
             }
             else -> false
         }
-    }*/
+    }
 
     private fun echo(message: String, callbackContext: CallbackContext) {
         if (message.isNotEmpty()) {

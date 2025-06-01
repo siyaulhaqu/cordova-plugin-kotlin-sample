@@ -8,7 +8,22 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class KotlinSamplePlugin : CordovaPlugin() {
+
     override fun execute(action: String, args: JSONArray, callbackContext: CallbackContext): Boolean {
+        println("ANDROID_DEBUG: Received action - $action") // Check in Android Logcat
+    
+        when (action) {
+                "echo" -> {
+                    cordova.activity.runOnUiThread {
+                        callbackContext.success("Direct from Kotlin")
+                    }
+                    return true
+                }
+                else -> return false
+            }
+    }
+    
+/*    override fun execute(action: String, args: JSONArray, callbackContext: CallbackContext): Boolean {
         return when (action) {
             "echo" -> {
                 val message = args.getString(0)
@@ -22,7 +37,7 @@ class KotlinSamplePlugin : CordovaPlugin() {
             }
             else -> false
         }
-    }
+    }*/
 
     private fun echo(message: String, callbackContext: CallbackContext) {
         if (message.isNotEmpty()) {

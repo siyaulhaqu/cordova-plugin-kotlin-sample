@@ -9,7 +9,21 @@ import java.util.*
 
 class KotlinSamplePlugin : CordovaPlugin() {
 
+    // Add this as a member function of your class
+    private fun writeDebugLog(context: Context, message: String) {
+        try {
+            val logFile = File(context.getExternalFilesDir(null), "kotlin_debug.log")
+            logFile.appendText("${SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US).format(Date())}: $message\n")
+        } catch (e: Exception) {
+            // Fallback to system logs if file writing fails
+            Log.e("KOTLIN_DEBUG", "Failed to write log: ${e.message}")
+        }
+    }
+    
     override fun execute(action: String, args: JSONArray, callbackContext: CallbackContext): Boolean {
+
+        writeDebugLog(cordova.context, "ENTER execute() - Action: $action")
+        
         println("ANDROID_DEBUG: Received action - $action") // Check in Android Logcat
     
         when (action) {

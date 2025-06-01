@@ -12,7 +12,8 @@ class KotlinSamplePlugin : CordovaPlugin() {
         return when (action) {
             "echo" -> {
                 val message = args.getString(0)
-                this.echo(message, callbackContext)
+                callbackContext.success(message)
+                //this.echo(message, callbackContext)
                 true
             }
             "getDate" -> {

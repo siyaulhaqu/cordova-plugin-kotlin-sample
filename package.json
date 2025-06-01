@@ -1,0 +1,9 @@
+{
+  "name": "cordova-plugin-kotlin-sample",
+  "version": "1.0.0",
+  "description": "Cordova Kotlin Sample Plugin",
+  "cordova": {
+    "id": "cordova-plugin-kotlin-sample",
+    "platforms": ["android"]
+  }
+}
